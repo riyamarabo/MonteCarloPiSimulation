@@ -19,9 +19,10 @@ Method:
 """
 import random
 import time
+import math
 
 # the values will hold totals to calculate the averages at the end of the program
-totalRainDrops = 0
+totalRainDrops = int(0)
 totalRainTime = float(0)
 
 # simulating the raining for "10 days"
@@ -29,13 +30,13 @@ for days in range(1, 11):
 
     # initializing the rain drops inside the circle, the square, and the probability of c/s
     c, s, p = float(0), float(0), float(0)
-    rainDrops = 0
+    rainDrops = int(0)
 
     # takes a time stamp of the start each iteration of rain drops
     startTime = time.time()
 
     #  approximate pi to 5 digits precision
-    while p != 3.14159:
+    while 1e-6 < abs(p - math.pi):
 
         # use x and y coordinates to measure whether the drops fell in or out of the circle
         x, y = random.uniform(0.0, 1.0), random.uniform(0.0, 1.0)
@@ -48,7 +49,7 @@ for days in range(1, 11):
             c += 1
 
         # we calculate the probability and precise it to 5 digits
-        p = round((c/s) * 4, 5)
+        p = (c/s) * 4
 
         # how many rain drops needed to approximate pi = 3.14159
         rainDrops += 1
